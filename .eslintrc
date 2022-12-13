@@ -1,0 +1,29 @@
+{
+  "root": true,
+  "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+  },
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2022
+  },
+  "plugins": [
+  ],
+  "rules": {
+    "no-console": "off",
+    "no-undef": "off",
+    "no-new": "off",
+    "vue/no-v-html": "off",
+    "no-mixed-operators": "off",
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/max-attributes-per-line": "off",
+    "camelcase": "off",
+    "vue/multi-word-component-names": "off"
+  }
+}

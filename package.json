@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "node .output/server/index.mjs",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "heroku-postbuild": "npm run build"
+  },
+  "devDependencies": {
+    "@nuxtjs/google-fonts": "^2.0.0",
+    "@nuxtjs/tailwindcss": "^5.2.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.19.0",
+    "eslint-plugin-nuxt": "^3.2.0",
+    "eslint-plugin-vue": "^9.2.0",
+    "nuxt": "3.0.0-rc.4"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@fortawesome/free-brands-svg-icons": "^6.1.2",
+    "@fortawesome/free-regular-svg-icons": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "@fortawesome/vue-fontawesome": "^3.0.1",
+    "@pinia/nuxt": "^0.3.1",
+    "pinia": "^2.0.17",
+    "uuid": "^8.3.2",
+    "vue-toastification": "^2.0.0-rc.5"
+  }
+}
