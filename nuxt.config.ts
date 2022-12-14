@@ -1,15 +1,14 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
     target: 'static',
     css: [
         '@/assets/css/main.css',
     ],
     modules: [
-        '@nuxtjs/tailwindcss'
+        '@nuxtjs/tailwindcss',
+        '@pinia/nuxt'
     ],
     buildModules: [
-        '@nuxtjs/google-fonts',
-        '@pinia/nuxt'
+        '@nuxtjs/google-fonts'
     ],
     build: {
         transpile: [
@@ -27,4 +26,5 @@ export default defineNuxtConfig({
 			PROXY: process.env.PROXY,
 		},
 	},
+    devServerHandlers: [],
 })

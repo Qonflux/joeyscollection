@@ -5,17 +5,19 @@
     <!-- Stats and filters -->
     <div class="flex justify-between text-sm mb-3">
       <div class="text-gray-500">{{ gameStore.games?.length }} game<span v-if="gameStore.games?.length > 1">s</span></div>
-      <p>
+      <p class="flex gap-1 items-center">
         Sorteren: <span class="text-gray-500 cursor-pointer" @click="changeSorting">{{ sortingValue }}</span> 
         <font-awesome-layers class="cursor-pointer" @click="toggleSorted">
-          <font-awesome-icon icon="sort-down" :class="{'text-gray-500': isSortedUp}" />
-          <font-awesome-icon icon="sort-up" :class="{'text-gray-500': !isSortedUp}" />
+          <font-awesome-icon :icon="['fas', 'sort-down']" class="h-4 w-4" :class="{'text-gray-500': isSortedUp}" />
+          <font-awesome-icon :icon="['fas', 'sort-up']" class="h-4 w-4" :class="{'text-gray-500': !isSortedUp}" />
         </font-awesome-layers>
       </p>
-      <p class="text-violet-500 cursor-pointer">
-        <span @click="openFilters = true"><font-awesome-icon icon="fa-solid fa-filter" /> Filters</span>
-        <font-awesome-icon v-if="gameStore.hasFiltered" icon="fa-solid fa-circle-xmark" class="text-gray-500 ml-1" @click="gameStore.removeFilters()" />
-      </p>
+      <div class="flex gap-1 items-center">
+        <p class="text-violet-500 cursor-pointer flex gap-1 items-center" @click="openFilters = true">
+          <font-awesome-icon icon="fa-solid fa-filter" class="h-4 w-4" /> <span>Filters</span>
+        </p>
+        <font-awesome-icon v-if="gameStore.hasFiltered" icon="fa-solid fa-circle-xmark" class="h-4 w-4 text-gray-500 ml-1" @click="gameStore.removeFilters()" />
+      </div>
     </div>
 
     <div class="grid grid-cols-12 gap-4 mb-1">
@@ -25,8 +27,9 @@
           <h3 class="text-center">{{ game.name }}</h3>
           <p class="text-center mt-3">Release: {{ game.releaseDate }}</p>
           <p class="text-center mt-3">Platform: <img :src="getImage(game.platform)" class="inline"></p>
-          <p class="text-center mt-3">
-            Uitgespeeld: <font-awesome-icon :icon="`fa-solid fa-${game.completed ? 'check-circle' : 'circle-xmark'}`" :class="game.completed ? 'text-green-500' : 'text-red-500'" />
+          <p class="text-center mt-3 flex gap-1 items-center justify-center">
+            <span>Uitgespeeld:</span> 
+            <font-awesome-icon :icon="`fa-solid fa-${game.completed ? 'check-circle' : 'circle-xmark'}`" class="w-4 h-4" :class="game.completed ? 'text-green-500' : 'text-red-500'" />
           </p>
         </div>
 

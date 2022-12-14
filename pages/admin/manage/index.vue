@@ -13,7 +13,7 @@
           <button @click="deleteGame(game._id)">
             <font-awesome-icon 
               icon="fa-solid fa-circle-xmark" 
-              class="text-red-500 ml-4 mb-0.5 cursor-pointer"
+              class="w-4 h-4 text-red-500 ml-4 mb-0.5 cursor-pointer"
             />
           </button>
         </td>

@@ -6,7 +6,7 @@
       class="hidden sm:block"
       @click="emit('prev')"
     >
-      <font-awesome-icon icon="fa-solid fa-angle-left" />
+      <font-awesome-icon icon="fa-solid fa-angle-left" class="w-4 h-4" />
     </GamesPaginationButton>
 
     <div class="flex gap-2 mx-auto">
@@ -56,7 +56,7 @@
       :is-disabled="props.currentPage === lastPage" 
       @click="emit('next')"
     >
-      <font-awesome-icon icon="fa-solid fa-angle-right" />
+      <font-awesome-icon icon="fa-solid fa-angle-right" class="w-4 h-4" />
     </GamesPaginationButton>
   </div>
 </template>

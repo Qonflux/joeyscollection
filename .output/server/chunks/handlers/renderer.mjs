@@ -2,15 +2,16 @@ import { createRenderer } from 'vue-bundle-renderer/runtime';
 import { eventHandler, getQuery, createError } from 'h3';
 import { renderToString } from 'vue/server-renderer';
 import { joinURL } from 'ufo';
-import { u as useNitroApp, a as useRuntimeConfig, g as getRouteRules } from '../nitro/node-server.mjs';
-import 'node-fetch-native/polyfill';
-import 'http';
-import 'https';
+import { u as useRuntimeConfig } from '../nitro/config.mjs';
+import { u as useNitroApp, g as getRouteRules } from '../nitro/node-server.mjs';
 import 'destr';
+import 'scule';
+import 'node-fetch-native/polyfill';
+import 'node:http';
+import 'node:https';
 import 'ofetch';
 import 'unenv/runtime/fetch/index';
 import 'hookable';
-import 'scule';
 import 'ohash';
 import 'unstorage';
 import 'defu';
@@ -23,14 +24,18 @@ function defineRenderHandler(handler) {
   return eventHandler(async (event) => {
     if (event.req.url.endsWith("/favicon.ico")) {
       event.res.setHeader("Content-Type", "image/x-icon");
-      event.res.end("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+      event.res.end(
+        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      );
       return;
     }
     const response = await handler(event);
     if (!response) {
       if (!event.res.writableEnded) {
         event.res.statusCode = event.res.statusCode === 200 ? 500 : event.res.statusCode;
-        event.res.end("No response returned from render handler: " + event.req.url);
+        event.res.end(
+          "No response returned from render handler: " + event.req.url
+        );
       }
       return;
     }
@@ -354,11 +359,13 @@ const getSPARenderer = lazyCachedFunction(async () => {
 });
 const PAYLOAD_URL_RE = /\/_payload(\.[a-zA-Z0-9]+)?.js(\?.*)?$/;
 const renderer = defineRenderHandler(async (event) => {
+  const nitroApp = useNitroApp();
   const ssrError = event.node.req.url?.startsWith("/__nuxt_error") ? getQuery(event) : null;
   if (ssrError && event.node.req.socket.readyState !== "readOnly") {
     throw createError("Cannot directly render error page!");
   }
-  let url = ssrError?.url || event.node.req.url;
+  const islandContext = void 0;
+  let url = ssrError?.url || islandContext?.url || event.node.req.url;
   const isRenderingPayload = PAYLOAD_URL_RE.test(url);
   if (isRenderingPayload) {
     url = url.substring(0, url.lastIndexOf("/")) || "/";
@@ -372,7 +379,8 @@ const renderer = defineRenderHandler(async (event) => {
     noSSR: !!event.node.req.headers["x-nuxt-no-ssr"] || routeOptions.ssr === false || (false),
     error: !!ssrError,
     nuxt: void 0,
-    payload: ssrError ? { error: ssrError } : {}
+    payload: ssrError ? { error: ssrError } : {},
+    islandContext
   };
   const renderer = ssrContext.noSSR ? await getSPARenderer() : await getSSRRenderer();
   const _rendered = await renderer.renderToString(ssrContext).catch((error) => {
@@ -389,6 +397,7 @@ const renderer = defineRenderHandler(async (event) => {
   const renderedMeta = await ssrContext.renderMeta?.() ?? {};
   const inlinedStyles = await renderInlineStyles(ssrContext.modules ?? ssrContext._registeredComponents ?? []) ;
   const htmlContext = {
+    island: Boolean(islandContext),
     htmlAttrs: normalizeChunks([renderedMeta.htmlAttrs]),
     head: normalizeChunks([
       renderedMeta.headTags,
@@ -403,24 +412,21 @@ const renderer = defineRenderHandler(async (event) => {
       renderedMeta.bodyScriptsPrepend,
       ssrContext.teleports?.body
     ]),
-    body: [
-      _rendered.html
-    ],
+    body: [_rendered.html],
     bodyAppend: normalizeChunks([
       `<script>window.__NUXT__=${devalue(ssrContext.payload)}<\/script>`,
       _rendered.renderScripts(),
       renderedMeta.bodyScripts
     ])
   };
-  const nitroApp = useNitroApp();
   await nitroApp.hooks.callHook("render:html", htmlContext, { event });
   const response = {
     body: renderHTMLDocument(htmlContext),
     statusCode: event.node.res.statusCode,
     statusMessage: event.node.res.statusMessage,
     headers: {
-      "Content-Type": "text/html;charset=UTF-8",
-      "X-Powered-By": "Nuxt"
+      "content-type": "text/html;charset=utf-8",
+      "x-powered-by": "Nuxt"
     }
   };
   return response;
