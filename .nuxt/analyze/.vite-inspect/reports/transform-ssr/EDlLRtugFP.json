@@ -1,0 +1,294 @@
+{
+  "resolvedId": "/Users/joey/Projects/collection/components/base/LoadingSpinner.vue?vue&type=style&index=0&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\n.spinner {\n  transition: all 0.3s linear;\n}\n\n@keyframes spinner-spin {\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n}\n",
+      "start": 1711551335194,
+      "end": 1711551335194,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/joey/Projects/collection/components/base/LoadingSpinner.vue"
+        ],
+        "names": [],
+        "mappings": ";AA6CA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACP,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B;;AAEA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACtB,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EAC9B,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;AACpC",
+        "file": "/Users/joey/Projects/collection/components/base/LoadingSpinner.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n  <div class=\"spinner\" :style=\"spinnerStyle\" />\n</template>\n\n<script>\nexport default {\n  props: {\n    size: {\n      type: [Number, String],\n      default: 1.5\n    },\n    lineSize: {\n      type: [Number, String],\n      default: 0.25\n    },\n    lineBgColor: {\n      type: String,\n      default: '#eee'\n    },\n    lineFgColor: {\n      type: String,\n      default: '#7C3AED'\n    },\n    speed: {\n      type: [Number, String],\n      default: 0.8\n    }\n  },\n  computed: {\n    spinnerStyle() {\n      return {\n        'margin': '0 auto',\n        'border-radius': '100%',\n        'border': this.lineSize + 'rem solid ' + this.lineBgColor,\n        'border-top': this.lineSize + 'rem solid ' + this.lineFgColor,\n        'width': this.size + 'rem',\n        'height': this.size + 'rem',\n        'animation': 'spinner-spin ' + this.speed + 's linear infinite'\n      }\n    }\n  }\n}\n</script>\n\n<style>\n.spinner {\n  transition: all 0.3s linear;\n}\n\n@keyframes spinner-spin {\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n}\n</style>"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1711551335194,
+      "end": 1711551335194,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1711551335194,
+      "end": 1711551335194,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1711551335194,
+      "end": 1711551335194,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1711551335194,
+      "end": 1711551335194,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1711551335194,
+      "end": 1711551335194,
+      "order": "pre"
+    },
+    {
+      "name": "server-only-component-transform",
+      "start": 1711551335194,
+      "end": 1711551335194,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ".spinner{transition:all .3s linear}@keyframes spinner-spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}",
+      "start": 1711551335194,
+      "end": 1711551335211,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/joey/Projects/collection/components/base/LoadingSpinner.vue",
+        "mappings": "AACA,SACE,yBACF,CAEA,wBACE,GAAK,sBAAyB,CAC9B,GAAO,uBAA2B,CACpC",
+        "names": [],
+        "sources": [
+          "/Users/joey/Projects/collection/components/base/LoadingSpinner.vue"
+        ],
+        "sourcesContent": [
+          "\n.spinner {\n  transition: all 0.3s linear;\n}\n\n@keyframes spinner-spin {\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n}\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1711551335211,
+      "end": 1711551335211,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1711551335211,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": ".spinner{transition:all .3s linear}@keyframes spinner-spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/joey/Projects/collection/components/base/LoadingSpinner.vue",
+        "mappings": "AAAA,SAAS,yBAAyB,CAAC,wBAAwB,GAAG,sBAAsB,CAAC,GAAG,uBAAuB,CAAC",
+        "names": [],
+        "sources": [
+          "/Users/joey/Projects/collection/components/base/LoadingSpinner.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1711551335212,
+      "end": 1711551335212,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1711551335215,
+      "end": 1711551335215,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "resolvedId": "/Users/joey/Projects/collection/components/base/LoadingSpinner.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\n  <div class=\"spinner\" :style=\"spinnerStyle\" />\n</template>\n\n<script>\nexport default {\n  props: {\n    size: {\n      type: [Number, String],\n      default: 1.5\n    },\n    lineSize: {\n      type: [Number, String],\n      default: 0.25\n    },\n    lineBgColor: {\n      type: String,\n      default: '#eee'\n    },\n    lineFgColor: {\n      type: String,\n      default: '#7C3AED'\n    },\n    speed: {\n      type: [Number, String],\n      default: 0.8\n    }\n  },\n  computed: {\n    spinnerStyle() {\n      return {\n        'margin': '0 auto',\n        'border-radius': '100%',\n        'border': this.lineSize + 'rem solid ' + this.lineBgColor,\n        'border-top': this.lineSize + 'rem solid ' + this.lineFgColor,\n        'width': this.size + 'rem',\n        'height': this.size + 'rem',\n        'animation': 'spinner-spin ' + this.speed + 's linear infinite'\n      }\n    }\n  }\n}\n</script>\n\n<style>\n.spinner {\n  transition: all 0.3s linear;\n}\n\n@keyframes spinner-spin {\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n}\n</style>",
+      "start": 1711551332767,
+      "end": 1711551332842,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1711551332842,
+      "end": 1711551332842,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1711551332842,
+      "end": 1711551332842,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1711551332842,
+      "end": 1711551332842,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1711551332842,
+      "end": 1711551332842,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1711551332842,
+      "end": 1711551332842,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1711551332842,
+      "end": 1711551332842,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1711551332842,
+      "end": 1711551332842,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "\nconst _sfc_main = {\n  props: {\n    size: {\n      type: [Number, String],\n      default: 1.5\n    },\n    lineSize: {\n      type: [Number, String],\n      default: 0.25\n    },\n    lineBgColor: {\n      type: String,\n      default: '#eee'\n    },\n    lineFgColor: {\n      type: String,\n      default: '#7C3AED'\n    },\n    speed: {\n      type: [Number, String],\n      default: 0.8\n    }\n  },\n  computed: {\n    spinnerStyle() {\n      return {\n        'margin': '0 auto',\n        'border-radius': '100%',\n        'border': this.lineSize + 'rem solid ' + this.lineBgColor,\n        'border-top': this.lineSize + 'rem solid ' + this.lineFgColor,\n        'width': this.size + 'rem',\n        'height': this.size + 'rem',\n        'animation': 'spinner-spin ' + this.speed + 's linear infinite'\n      }\n    }\n  }\n}\n\nimport { normalizeStyle as _normalizeStyle, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\n\nfunction _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {\n  return (_openBlock(), _createElementBlock(\"div\", {\n    class: \"spinner\",\n    style: _normalizeStyle($options.spinnerStyle)\n  }, null, 4))\n}\n\nimport \"/Users/joey/Projects/collection/components/base/LoadingSpinner.vue?vue&type=style&index=0&lang.css\"\n\nimport _export_sfc from '\u0000plugin-vue:export-helper'\nexport default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]])",
+      "start": 1711551332842,
+      "end": 1711551332845,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1711551332845,
+      "end": 1711551332845,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1711551332845,
+      "end": 1711551332846,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1711551332846,
+      "end": 1711551332846,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1711551332846,
+      "end": 1711551332846,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1711551332846,
+      "end": 1711551332846,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1711551332846,
+      "end": 1711551332846,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1711551332846,
+      "end": 1711551332846,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1711551332846,
+      "end": 1711551332846,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1711551332846,
+      "end": 1711551332846,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1711551332846,
+      "end": 1711551332846,
+      "order": "normal"
+    }
+  ]
+}

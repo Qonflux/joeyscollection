@@ -1,0 +1,218 @@
+{
+  "resolvedId": "/Users/joey/Projects/collection/assets/css/main.css",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "*,\n*::before,\n*::after {\n  box-sizing: border-box;\n  margin: 0;\n}\n\n/**\n * Remove focus styles for non-keyboard focus.\n */\n :focus:not(:focus-visible) {\n  outline: 0;\n  box-shadow: none;\n}\n\n/**\n * Cross-browser styles for explicit focus via \n * keyboard-based (eg Tab) navigation or the\n * .focus-visible utility class.\n */\n:focus:not(input):not(textarea),\n.focus-visible:focus:not(:focus-visible):not(input):not(textarea) {\n  outline: 0;\n  box-shadow: 0 0 0 .1rem #0094cb;\n}\n\ninput:focus,\ntextarea:focus,\ninput.focus-visible:focus:not(:focus-visible),\ntextarea.focus-visible:focus:not(:focus-visible) {\n  outline: 0;\n  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);\n}\n\nhtml {\n  color: #eff0f1;\n  background-color: rgb(15 23 42);\n  font-family: \"Aktiv Grotesk\",\"Segoe UI\",Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";\n  font-size: 16px;\n  word-spacing: 1px;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  box-sizing: border-box;\n}\n\nbody, html {\n  height: 100%;\n}\n\nh1, h2, h3, .h1, .h2, .h3 {\n  font-family: 'Roboto Slab', serif;\n  font-weight: 700;\n  line-height: 1.25;\n}\n\nh1, .h1 {\n  margin-bottom: 1rem;\n  font-size: 1.5rem;\n}\n\nh2, h3, .h2, .h3 {\n  margin-bottom: 0.5rem\n}\n\nh2, .h2 {\n  font-size: 1.125rem;\n}\n\nh3, .h3 {\n  font-size: 1rem;\n}\n\np {\n  font-size: 0.875rem;\n}\n\na {\n  cursor: pointer;\n  text-decoration: underline;\n}\n\na:hover {\n  text-decoration: none;\n}\n\n/* Prevents scrollbar from changing content width */\n@media screen and (min-width: 960px) {\n  html {\n    width: 100vw;\n    overflow-x: hidden;\n  }\n}\n\n.Vue-Toastification__toast--info {\n  background-color: #7C3AED!important;\n}",
+      "start": 1711551332012,
+      "end": 1711551332097,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1711551332097,
+      "end": 1711551332097,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1711551332097,
+      "end": 1711551332097,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1711551332097,
+      "end": 1711551332097,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "*,:after,:before{box-sizing:border-box;margin:0}:focus:not(:focus-visible){box-shadow:none;outline:0}.focus-visible:focus:not(:focus-visible):not(input):not(textarea),:focus:not(input):not(textarea){box-shadow:0 0 0 .1rem #0094cb;outline:0}input.focus-visible:focus:not(:focus-visible),input:focus,textarea.focus-visible:focus:not(:focus-visible),textarea:focus{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);outline:0}html{background-color:#0f172a;color:#eff0f1;font-family:Aktiv Grotesk,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;font-size:16px;word-spacing:1px;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;box-sizing:border-box}body,html{height:100%}.h1,.h2,.h3,h1,h2,h3{font-family:Roboto Slab,serif;font-weight:700;line-height:1.25}.h1,h1{font-size:1.5rem;margin-bottom:1rem}.h2,.h3,h2,h3{margin-bottom:.5rem}.h2,h2{font-size:1.125rem}.h3,h3{font-size:1rem}p{font-size:.875rem}a{cursor:pointer;text-decoration:underline}a:hover{text-decoration:none}@media screen and (min-width:960px){html{overflow-x:hidden;width:100vw}}.Vue-Toastification__toast--info{background-color:#7c3aed!important}",
+      "start": 1711551332097,
+      "end": 1711551332387,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1711551332387,
+      "end": 1711551332387,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1711551332387,
+      "end": 1711551332387,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1711551332387,
+      "end": 1711551332387,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1711551332387,
+      "end": 1711551332387,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1711551332387,
+      "end": 1711551332387,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551332387,
+      "end": 1711551332387,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1711551332387,
+      "end": 1711551332387,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1711551332387,
+      "end": 1711551332387,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1711551332387,
+      "end": 1711551332387,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551332387,
+      "end": 1711551332388,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1711551332388,
+      "end": 1711551332388,
+      "order": "normal"
+    }
+  ]
+}

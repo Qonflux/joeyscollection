@@ -1,0 +1,294 @@
+{
+  "resolvedId": "/Users/joey/Projects/collection/pages/index.vue?vue&type=style&index=0&scoped=fa7d374b&lang.postcss",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\n#game:hover > .info {\n  opacity: 100%;\n}\n\n#game:hover > img {\n  @apply brightness-50;\n}\n\n.text-xxs {\n  font-size: 0.625rem;\n}\n",
+      "start": 1711551334979,
+      "end": 1711551334979,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/joey/Projects/collection/pages/index.vue"
+        ],
+        "names": [],
+        "mappings": ";AAyJA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE;EAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC;AACf;;AAEA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,EAAE,CAAC,CAAC,EAAE;EAChB,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtB;;AAEA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACR,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrB",
+        "file": "/Users/joey/Projects/collection/pages/index.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n  <div>\n    <FilterOverlay :show=\"openFilters\" @reset-page=\"page = 0\" @close=\"openFilters = false\" />\n\n    <!-- Stats and filters -->\n    <div class=\"flex justify-between text-sm mb-3 whitespace-nowrap\">\n      <div class=\"text-gray-500 flex items-center\">{{ gameStore.games?.length }} game<span v-if=\"gameStore.games?.length > 1\">s</span></div>\n      <div class=\"flex gap-1 items-center\">\n        Sorteren: <span class=\"text-gray-500 cursor-pointer\" @click=\"changeSorting\">{{ sortingValue }}</span> \n        <font-awesome-layers class=\"cursor-pointer\" @click=\"toggleSorted\">\n          <font-awesome-icon :icon=\"['fas', 'sort-down']\" class=\"h-4 w-4\" :class=\"{'text-gray-500': isSortedUp}\" />\n          <font-awesome-icon :icon=\"['fas', 'sort-up']\" class=\"h-4 w-4\" :class=\"{'text-gray-500': !isSortedUp}\" />\n        </font-awesome-layers>\n      </div>\n      <div class=\"flex gap-1 items-center\">\n        <p class=\"text-violet-500 cursor-pointer flex gap-1 items-center\" @click=\"openFilters = true\">\n          <font-awesome-icon icon=\"fa-solid fa-filter\" class=\"h-4 w-4\" /> <span>Filters</span>\n        </p>\n        <font-awesome-icon v-if=\"gameStore.hasFiltered\" icon=\"fa-solid fa-circle-xmark\" class=\"h-4 w-4 text-gray-500 ml-1\" @click=\"gameStore.removeFilters()\" />\n      </div>\n    </div>\n\n    <div class=\"grid grid-cols-12 gap-4 mb-1\">\n      <div v-for=\"game in gamesArray.slice(page * numPerPage, page * numPerPage + numPerPage)\" id=\"game\" :key=\"game._id\" class=\"col-span-6 sm:col-span-4 lg:col-span-3 xl:col-span-2 relative\">\n        <img :src=\"game.cover\" class=\"mx-auto rounded-md transition duration-200 border-2 border-gray-700 h-full\">\n        <div class=\"info absolute top-4 left-0 opacity-0 transition duration-200 w-full\">\n          <h3 class=\"text-center\">{{ game.name }}</h3>\n          <p class=\"text-center mt-3\">Release: {{ game.releaseDate }}</p>\n          <p class=\"text-center mt-3\">Platform: <img :src=\"getImage(game.platform)\" class=\"inline\"></p>\n          <p class=\"text-center mt-3 flex gap-1 items-center justify-center\">\n            <span>Uitgespeeld:</span> \n            <font-awesome-icon :icon=\"`fa-solid fa-${game.completed ? 'check-circle' : 'circle-xmark'}`\" class=\"w-4 h-4\" :class=\"game.completed ? 'text-green-500' : 'text-red-500'\" />\n          </p>\n        </div>\n\n        <!-- Tags -->\n        <div class=\"info absolute bottom-2 left-2 opacity-0 transition duration-200 text-xxs flex gap-2 flex-wrap\">\n          <div v-for=\"genre in game.genres\" :key=\"genre\" class=\"bg-violet-600 pt-1 pb-0.5 px-2 rounded-full\">\n            {{ genre }}\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <!-- Pagination -->\n    <GamesPagination \n      v-if=\"gameStore.games.length > numPerPage\" \n      :current-page=\"page\"\n      :num-per-page=\"numPerPage\"\n      :num-games=\"gameStore.games.length\"\n      @next=\"nextPage\"\n      @prev=\"previousPage\"\n      @change=\"page = $event\"\n    />\n  </div>\n</template>\n\n<script setup>\nimport { UseGameStore } from '~/store/games'\nconst gameStore = UseGameStore()\n\n// Get and set games in store \nconst games = await gameStore.getAllGames()\ngameStore.setGames(games)\n\nconst openFilters = ref(false)\nconst page = ref(0)\nconst numPerPage = ref(30)\nconst isSortedUp = ref(false)\nconst sorting = ref('date')\n\nconst getImage = (platform) => {\n  let img = '/images/'\n  if (platform === 'Nintendo Entertainment System (NES)') {\n    img += 'nes.png'\n  } else if (platform === 'Super Nintendo Entertainment System (SNES)') {\n    img += 'snes.png'\n  } else if (platform === 'Nintendo 64') {\n    img += 'n64.png'\n  } else if (platform === 'Nintendo GameCube') {\n    img += 'gc.png'\n  } else if (platform === 'Wii') {\n    img += 'wii.png'\n  } else if (platform === 'Wii U') {\n    img += 'wii-u.png'\n  } else if (platform === 'Nintendo Switch') {\n    img += 'switch.png'\n  } else if (platform === 'Game Boy') {\n    img += 'gb.png'\n  } else if (platform === 'Game Boy Color') {\n    img += 'gbc.png'\n  } else if (platform === 'Game Boy Advance') {\n    img += 'gba.png'\n  } else if (platform === 'Nintendo DS') {\n    img += 'ds.png'\n  } else if (platform === 'Nintendo 3DS') {\n    img += '3ds.png'\n  } else if (platform === 'PlayStation') {\n    img += 'ps.png'\n  } else if (platform === 'PlayStation 2') {\n    img += 'ps2.png'\n  } else if (platform === 'PlayStation 3') {\n    img += 'ps3.png'\n  } else if (platform === 'PlayStation 4') {\n    img += 'ps4.png'\n  } else if (platform === 'PlayStation 5') {\n    img += 'ps5.png'\n  } else if (platform === 'Xbox') {\n    img += 'xbox.png'\n  } else if (platform === 'Xbox 360') {\n    img += 'xbox-360.png'\n  } else if (platform === 'Xbox One') {\n    img += 'xbox-one.png'\n  } else if (platform === 'Xbox Series') {\n    img += 'xbox-series.png'\n  } else {\n    img += 'md.png'\n  }\n  return img\n}\n\nconst sortingValue = computed(() => {\n  return sorting.value === 'date' ? 'Toegevoegd' : 'Alfabetisch'\n})\n\nconst gamesArray = computed(() => {\n  let games = [...gameStore.games]\n  if (sorting.value === 'alphabet') {\n    games = games.sort((a, b) => a.name.localeCompare(b.name))\n  }\n  const reversedGames = games.slice().reverse()\n  return isSortedUp.value ? reversedGames : games\n})\n\nconst previousPage = () => {\n  if (page.value !== 0) page.value--\n}\n\nconst nextPage = () => {\n  page.value++\n}\n\nconst toggleSorted = () => {\n  isSortedUp.value = !isSortedUp.value\n}\n\nconst changeSorting = () => {\n  if (sorting.value === 'date') sorting.value = 'alphabet'\n  else sorting.value = 'date'\n}\n</script>\n\n<style scoped lang=\"postcss\">\n#game:hover > .info {\n  opacity: 100%;\n}\n\n#game:hover > img {\n  @apply brightness-50;\n}\n\n.text-xxs {\n  font-size: 0.625rem;\n}\n</style>"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1711551334979,
+      "end": 1711551334979,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1711551334979,
+      "end": 1711551334979,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1711551334980,
+      "end": 1711551334980,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1711551334980,
+      "end": 1711551334980,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1711551334980,
+      "end": 1711551334980,
+      "order": "pre"
+    },
+    {
+      "name": "server-only-component-transform",
+      "start": 1711551334980,
+      "end": 1711551334980,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "#game:hover>.info{opacity:100%}#game:hover>img{--tw-brightness:brightness(.5);filter:var(--tw-blur) brightness(.5) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.text-xxs{font-size:.625rem}",
+      "start": 1711551334980,
+      "end": 1711551334999,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/joey/Projects/collection/pages/index.vue",
+        "mappings": "AACA,kBACE,YACF,CAGE,gBAAA,8BAAoB,CAApB,0KAAoB,CAApB,gLAAoB,CAGtB,UACE,iBACF",
+        "names": [],
+        "sources": [
+          "/Users/joey/Projects/collection/pages/index.vue"
+        ],
+        "sourcesContent": [
+          "\n#game:hover > .info {\n  opacity: 100%;\n}\n\n#game:hover > img {\n  @apply brightness-50;\n}\n\n.text-xxs {\n  font-size: 0.625rem;\n}\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1711551334999,
+      "end": 1711551334999,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1711551334999,
+      "end": 1711551334999,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1711551334999,
+      "end": 1711551334999,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "#game:hover>.info[data-v-fa7d374b]{opacity:100%}#game:hover>img[data-v-fa7d374b]{--tw-brightness:brightness(.5);filter:var(--tw-blur) brightness(.5) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.text-xxs[data-v-fa7d374b]{font-size:.625rem}",
+      "start": 1711551334999,
+      "end": 1711551334999,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/joey/Projects/collection/pages/index.vue",
+        "mappings": "AAAA,mCAAkB,YAAY,CAAC,iCAAgB,8BAA8B,CAAC,0KAA0K,CAAC,gLAAgL,CAAC,2BAAU,iBAAiB",
+        "names": [],
+        "sources": [
+          "/Users/joey/Projects/collection/pages/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1711551334999,
+      "end": 1711551334999,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551334999,
+      "end": 1711551334999,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551334999,
+      "end": 1711551334999,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1711551334999,
+      "end": 1711551334999,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1711551334999,
+      "end": 1711551334999,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1711551334999,
+      "end": 1711551334999,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551334999,
+      "end": 1711551334999,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1711551334999,
+      "end": 1711551335000,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1711551335000,
+      "end": 1711551335000,
+      "order": "normal"
+    }
+  ]
+}

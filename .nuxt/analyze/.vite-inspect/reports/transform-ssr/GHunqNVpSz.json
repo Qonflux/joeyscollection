@@ -1,0 +1,294 @@
+{
+  "resolvedId": "/Users/joey/Projects/collection/components/FilterOverlay.vue?vue&type=style&index=0&scoped=6d06d5d9&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\n.dialog-enter-from,\n.dialog-leave-to {\n  opacity: 0;\n  transform: scale(1.1);\n}\n\n.dialog-enter-active {\n  transition: all 0.2s ease-out;\n}\n\n.dialog-leave-active {\n  transition: all 0.2s ease-in;\n}\n\n.dialog-enter-to,\n.dialog-leave-from {\n  opacity: 1;\n  transform: scale(1);\n}\n\n.w-88 {\n  width: 22rem;\n}\n",
+      "start": 1711551335299,
+      "end": 1711551335299,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/joey/Projects/collection/components/FilterOverlay.vue"
+        ],
+        "names": [],
+        "mappings": ";AA2MA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACf,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;EACV,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvB;;AAEA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/B;;AAEA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC9B;;AAEA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACjB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC;EACV,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrB;;AAEA,CAAC,CAAC,CAAC,CAAC,EAAE;EACJ,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC;AACd",
+        "file": "/Users/joey/Projects/collection/components/FilterOverlay.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<template>\n  <Teleport to=\"body\">\n    <!-- Black background -->\n    <transition name=\"dialog\">\n      <div\n        v-if=\"show\"\n        class=\"z-50 fixed w-full h-screen flex items-center\"\n        style=\"background: rgba(0,0,0,0.5);\"\n        @click.self=\"handleClose\"\n      >\n        <!-- Slide -->\n        <transition \n          enter-class=\"translate-x-full\" \n          leave-to-class=\"-translate-x-full\"\n          enter-active-class=\"transition-all duration-200 ease-in\"\n          leave-active-class=\"transition-all duration-200 ease-out\"\n        >\n          <div\n            v-if=\"showOverlay\"\n            class=\"flex flex-col h-screen z-70 shadow-md bg-gray-800 text-sm relative mr-auto w-screen sm:w-100 transform p-4 overflow-y-auto overflow-x-hidden\"\n          >\n            <!-- Head -->\n            <div class=\"flex text-lg\">\n              <h2>Filters</h2>\n              <div class=\"ml-auto cursor-pointer font-bold\" @click=\"emit('close')\">X</div>\n            </div>\n\n            <hr class=\"my-3\">\n            <input v-model=\"search\" type=\"text\" placeholder=\"Zoeken op naam...\" class=\"rounded-md p-2 text-black\">\n            <hr class=\"my-3\">            \n\n            <!-- Genres -->\n            <h3>Genres</h3>\n            <div v-for=\"qty, genre in genres\" :key=\"genre\" class=\"flex gap-1.5 w-60\">\n              <input :id=\"genre\" v-model=\"checkedGenres\" type=\"checkbox\" :value=\"genre\">\n              <label :for=\"genre\" class=\"text-sm\"> {{ genre }}</label><br>\n              <p class=\"ml-auto text-gray-500\">{{ qty }}</p>\n            </div>\n\n            <!-- Finished -->\n            <h3 class=\"mt-6\">Uitgespeeld</h3>\n            <div v-for=\"qty, complete in completed\" :key=\"complete\" class=\"flex gap-1.5 w-40\">\n              <input :id=\"complete\" v-model=\"checkedCompleted\" type=\"checkbox\" :value=\"complete\">\n              <label :for=\"complete\" class=\"text-sm\"> {{ complete }}</label><br>\n              <p class=\"ml-auto text-gray-500\">{{ qty }}</p>\n            </div>\n\n            <!-- Platforms -->\n            <h3 class=\"mt-6\">Platformen</h3>\n            <div v-for=\"qty, platform in platforms\" :key=\"platform\" class=\"flex gap-1.5 w-88\">\n              <input :id=\"platform\" v-model=\"checkedPlatforms\" type=\"checkbox\" :value=\"platform\">\n              <label :for=\"platform\" class=\"text-sm\"> {{ platform }}</label><br>\n              <p class=\"ml-auto text-gray-500\">{{ qty }}</p>\n            </div>\n\n            <button \n              class=\"bg-violet-600 hover:bg-violet-800 rounded-md font-bold py-2 px-4 my-3 transition duration-200\" \n              @click=\"setFilters(false)\"\n            >\n              Filters toepassen\n            </button>\n\n            <div class=\"flex gap-3\">\n              <button \n                class=\"bg-gray-600 hover:bg-gray-700 rounded-md font-bold py-2 px-4 transition duration-200 w-full\" \n                @click=\"setFilters(true)\"\n              >\n                Kies game!\n              </button>\n              <button \n                class=\"bg-gray-600 hover:bg-gray-700 rounded-md font-bold py-2 px-4 transition duration-200 w-full\" \n                @click=\"gameStore.removeFilters()\"\n              >\n                Filters verwijderen\n              </button>\n            </div>\n          </div>\n        </transition>\n      </div>\n    </transition>\n  </Teleport>\n</template>\n\n<script setup>\nimport { UseGameStore } from '~/store/games'\nconst gameStore = UseGameStore()\nconst { $showToast } = useNuxtApp()\n\nconst props = defineProps({\n  show: {\n    type: Boolean,\n    required: true\n  }\n})\n\nconst emit = defineEmits(['close', 'reset-page'])\n\nconst search = ref('')\n\nconst genres = reactive({})\ngameStore.games.forEach(game => {\n  game.genres.forEach(genre => {\n    if (!Object.prototype.hasOwnProperty.call(genres, genre)) genres[genre] = 1\n    else genres[genre]++\n  })\n})\n\nconst completed = reactive({})\ngameStore.games.forEach(game => {\n  if (game.completed) {\n    if (!Object.prototype.hasOwnProperty.call(completed, 'Uitgespeeld')) completed['Uitgespeeld'] = 1\n    else completed['Uitgespeeld']++\n  } else { \n    if (!Object.prototype.hasOwnProperty.call(completed, 'Niet uitgespeeld')) completed['Niet uitgespeeld'] = 1\n    else completed['Niet uitgespeeld']++\n  }\n})\n\nconst platforms = reactive({})\ngameStore.games.forEach(game => {\n  if (!Object.prototype.hasOwnProperty.call(platforms, game.platform)) platforms[game.platform] = 1\n    else platforms[game.platform]++\n})\n\nconst checkedGenres = ref([])\nconst checkedCompleted = ref([])\nconst checkedPlatforms = ref([])\n\nconst showOverlay = ref(false)\n\nwatch(() => props.show, (newVal) => {\n  nextTick(() => {\n    if (newVal) {\n      showOverlay.value = true\n      toggleHtmlClass('add', 'overflow-y-hidden')\n    } else {\n      toggleHtmlClass('remove', 'overflow-y-hidden')\n    }\n  })\n})\n\nconst toggleHtmlClass = (addRemoveClass, className) => {\n  const el = document.documentElement\n  addRemoveClass === 'add' ? el.classList.add(className) : el.classList.remove(className)\n}\n\nconst handleClose = () => {\n  showOverlay.value = false\n  setTimeout(() => {\n    emit('close')\n  }, 200)\n}\n\nconst setFilters = async (pickRandom) => {\n  let filteredGames = []\n  let games\n  if (gameStore.hasFiltered)  {\n    ({ value: games } = await gameStore.getAllGames())\n  } else {\n    games = JSON.parse(JSON.stringify(gameStore.games))\n  } \n\n  // Filter genres\n  if (checkedGenres.value.length > 0) {\n    filteredGames = games.filter(game => game.genres.some(game => checkedGenres.value.includes(game)))\n  }\n\n  // Filter search\n  if (search.value.length > 0) {\n    filteredGames = filteredGames.length > 0 ? filteredGames : games\n    filteredGames = filteredGames.filter(game => game.name.toLowerCase().includes(search.value.toLowerCase()))\n  }\n\n  // Filter completed\n  if (checkedCompleted.value.length > 0) {\n    filteredGames = filteredGames.length > 0 ? filteredGames : games\n    filteredGames = filteredGames.filter((game) => {\n      return (checkedCompleted.value.includes('Uitgespeeld') && game.completed) ||\n        (checkedCompleted.value.includes('Niet uitgespeeld') && !game.completed)\n    })\n  }\n\n  // Filter platforms\n  if (checkedPlatforms.value.length > 0) {\n    filteredGames = filteredGames.length > 0 ? filteredGames : games\n    filteredGames = filteredGames.filter(game => checkedPlatforms.value.includes(game.platform))\n  }\n\n  if (filteredGames.length > 0) {\n    gameStore.setHasFiltered(true)\n    if (pickRandom) {\n      filteredGames = [filteredGames[Math.floor(Math.random() * filteredGames.length)]]\n    }\n    gameStore.setGames(filteredGames)\n    emit('reset-page')\n    handleClose()\n  } else {\n    $showToast('Niks gevonden!', 'warning');\n  }\n}\n</script>\n\n<style scoped>\n.dialog-enter-from,\n.dialog-leave-to {\n  opacity: 0;\n  transform: scale(1.1);\n}\n\n.dialog-enter-active {\n  transition: all 0.2s ease-out;\n}\n\n.dialog-leave-active {\n  transition: all 0.2s ease-in;\n}\n\n.dialog-enter-to,\n.dialog-leave-from {\n  opacity: 1;\n  transform: scale(1);\n}\n\n.w-88 {\n  width: 22rem;\n}\n</style>"
+        ]
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1711551335299,
+      "end": 1711551335299,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1711551335299,
+      "end": 1711551335299,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1711551335299,
+      "end": 1711551335299,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1711551335299,
+      "end": 1711551335299,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1711551335299,
+      "end": 1711551335299,
+      "order": "pre"
+    },
+    {
+      "name": "server-only-component-transform",
+      "start": 1711551335299,
+      "end": 1711551335299,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ".dialog-enter-from,.dialog-leave-to{opacity:0;transform:scale(1.1)}.dialog-enter-active{transition:all .2s ease-out}.dialog-leave-active{transition:all .2s ease-in}.dialog-enter-to,.dialog-leave-from{opacity:1;transform:scale(1)}.w-88{width:22rem}",
+      "start": 1711551335299,
+      "end": 1711551335322,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/joey/Projects/collection/components/FilterOverlay.vue",
+        "mappings": "AACA,oCAEE,SAAU,CACV,oBACF,CAEA,qBACE,2BACF,CAEA,qBACE,0BACF,CAEA,oCAEE,SAAU,CACV,kBACF,CAEA,MACE,WACF",
+        "names": [],
+        "sources": [
+          "/Users/joey/Projects/collection/components/FilterOverlay.vue"
+        ],
+        "sourcesContent": [
+          "\n.dialog-enter-from,\n.dialog-leave-to {\n  opacity: 0;\n  transform: scale(1.1);\n}\n\n.dialog-enter-active {\n  transition: all 0.2s ease-out;\n}\n\n.dialog-leave-active {\n  transition: all 0.2s ease-in;\n}\n\n.dialog-enter-to,\n.dialog-leave-from {\n  opacity: 1;\n  transform: scale(1);\n}\n\n.w-88 {\n  width: 22rem;\n}\n"
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1711551335322,
+      "end": 1711551335322,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1711551335322,
+      "end": 1711551335322,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1711551335322,
+      "end": 1711551335322,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": ".dialog-enter-from[data-v-6d06d5d9],.dialog-leave-to[data-v-6d06d5d9]{opacity:0;transform:scale(1.1)}.dialog-enter-active[data-v-6d06d5d9]{transition:all .2s ease-out}.dialog-leave-active[data-v-6d06d5d9]{transition:all .2s ease-in}.dialog-enter-to[data-v-6d06d5d9],.dialog-leave-from[data-v-6d06d5d9]{opacity:1;transform:scale(1)}.w-88[data-v-6d06d5d9]{width:22rem}",
+      "start": 1711551335322,
+      "end": 1711551335323,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "/Users/joey/Projects/collection/components/FilterOverlay.vue",
+        "mappings": "AAAA,sEAAoC,SAAS,CAAC,oBAAoB,CAAC,sCAAqB,2BAA2B,CAAC,sCAAqB,0BAA0B,CAAC,sEAAoC,SAAS,CAAC,kBAAkB,CAAC,uBAAM,WAAW",
+        "names": [],
+        "sources": [
+          "/Users/joey/Projects/collection/components/FilterOverlay.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1711551335323,
+      "end": 1711551335323,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1711551335324,
+      "end": 1711551335324,
+      "order": "normal"
+    }
+  ]
+}

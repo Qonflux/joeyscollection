@@ -1,0 +1,212 @@
+{
+  "resolvedId": "virtual:nuxt:/Users/joey/Projects/collection/.nuxt/routes.mjs",
+  "transforms": [
+    {
+      "name": "virtual",
+      "result": "import { default as indexaqddKNyS6CMeta } from \"/Users/joey/Projects/collection/pages/admin/add/index.vue?macro=true\";\nimport { default as indexlHb3KfdaGTMeta } from \"/Users/joey/Projects/collection/pages/admin/index.vue?macro=true\";\nimport { default as indexZTulOEJQLXMeta } from \"/Users/joey/Projects/collection/pages/admin/manage/index.vue?macro=true\";\nimport { default as index8wSHxzSo0VMeta } from \"/Users/joey/Projects/collection/pages/index.vue?macro=true\";\nexport default [\n  {\n    name: indexaqddKNyS6CMeta?.name ?? \"admin-add\",\n    path: indexaqddKNyS6CMeta?.path ?? \"/admin/add\",\n    meta: indexaqddKNyS6CMeta || {},\n    alias: indexaqddKNyS6CMeta?.alias || [],\n    redirect: indexaqddKNyS6CMeta?.redirect,\n    component: () => import(\"/Users/joey/Projects/collection/pages/admin/add/index.vue\").then(m => m.default || m)\n  },\n  {\n    name: indexlHb3KfdaGTMeta?.name ?? \"admin\",\n    path: indexlHb3KfdaGTMeta?.path ?? \"/admin\",\n    meta: indexlHb3KfdaGTMeta || {},\n    alias: indexlHb3KfdaGTMeta?.alias || [],\n    redirect: indexlHb3KfdaGTMeta?.redirect,\n    component: () => import(\"/Users/joey/Projects/collection/pages/admin/index.vue\").then(m => m.default || m)\n  },\n  {\n    name: indexZTulOEJQLXMeta?.name ?? \"admin-manage\",\n    path: indexZTulOEJQLXMeta?.path ?? \"/admin/manage\",\n    meta: indexZTulOEJQLXMeta || {},\n    alias: indexZTulOEJQLXMeta?.alias || [],\n    redirect: indexZTulOEJQLXMeta?.redirect,\n    component: () => import(\"/Users/joey/Projects/collection/pages/admin/manage/index.vue\").then(m => m.default || m)\n  },\n  {\n    name: index8wSHxzSo0VMeta?.name ?? \"index\",\n    path: index8wSHxzSo0VMeta?.path ?? \"/\",\n    meta: index8wSHxzSo0VMeta || {},\n    alias: index8wSHxzSo0VMeta?.alias || [],\n    redirect: index8wSHxzSo0VMeta?.redirect,\n    component: () => import(\"/Users/joey/Projects/collection/pages/index.vue\").then(m => m.default || m)\n  }\n]",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1711551332119,
+      "end": 1711551332119,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1711551332120,
+      "end": 1711551332120,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1711551332120,
+      "end": 1711551332120,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1711551332120,
+      "end": 1711551332120,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1711551332120,
+      "end": 1711551332120,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1711551332120,
+      "end": 1711551332120,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1711551332120,
+      "end": 1711551332120,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1711551332120,
+      "end": 1711551332120,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1711551332120,
+      "end": 1711551332120,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1711551332120,
+      "end": 1711551332120,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1711551332120,
+      "end": 1711551332120,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1711551332120,
+      "end": 1711551332120,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1711551332120,
+      "end": 1711551332121,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1711551332121,
+      "end": 1711551332121,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1711551332121,
+      "end": 1711551332121,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1711551332121,
+      "end": 1711551332121,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1711551332122,
+      "end": 1711551332122,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1711551332122,
+      "end": 1711551332122,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1711551332122,
+      "end": 1711551332122,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "result": "import { __vitePreload } from \"\u0000vite/preload-helper.js\";import { default as indexaqddKNyS6CMeta } from \"/Users/joey/Projects/collection/pages/admin/add/index.vue?macro=true\";\nimport { default as indexlHb3KfdaGTMeta } from \"/Users/joey/Projects/collection/pages/admin/index.vue?macro=true\";\nimport { default as indexZTulOEJQLXMeta } from \"/Users/joey/Projects/collection/pages/admin/manage/index.vue?macro=true\";\nimport { default as index8wSHxzSo0VMeta } from \"/Users/joey/Projects/collection/pages/index.vue?macro=true\";\nexport default [\n  {\n    name: indexaqddKNyS6CMeta?.name ?? \"admin-add\",\n    path: indexaqddKNyS6CMeta?.path ?? \"/admin/add\",\n    meta: indexaqddKNyS6CMeta || {},\n    alias: indexaqddKNyS6CMeta?.alias || [],\n    redirect: indexaqddKNyS6CMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/Users/joey/Projects/collection/pages/admin/add/index.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: indexlHb3KfdaGTMeta?.name ?? \"admin\",\n    path: indexlHb3KfdaGTMeta?.path ?? \"/admin\",\n    meta: indexlHb3KfdaGTMeta || {},\n    alias: indexlHb3KfdaGTMeta?.alias || [],\n    redirect: indexlHb3KfdaGTMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/Users/joey/Projects/collection/pages/admin/index.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: indexZTulOEJQLXMeta?.name ?? \"admin-manage\",\n    path: indexZTulOEJQLXMeta?.path ?? \"/admin/manage\",\n    meta: indexZTulOEJQLXMeta || {},\n    alias: indexZTulOEJQLXMeta?.alias || [],\n    redirect: indexZTulOEJQLXMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/Users/joey/Projects/collection/pages/admin/manage/index.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  },\n  {\n    name: index8wSHxzSo0VMeta?.name ?? \"index\",\n    path: index8wSHxzSo0VMeta?.path ?? \"/\",\n    meta: index8wSHxzSo0VMeta || {},\n    alias: index8wSHxzSo0VMeta?.alias || [],\n    redirect: index8wSHxzSo0VMeta?.redirect,\n    component: () => __vitePreload(() => import(\"/Users/joey/Projects/collection/pages/index.vue\"),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url).then(m => m.default || m)\n  }\n]",
+      "start": 1711551332122,
+      "end": 1711551332122,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1711551332122,
+      "end": 1711551332122,
+      "order": "normal"
+    }
+  ]
+}
