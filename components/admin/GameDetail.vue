@@ -79,7 +79,7 @@ const onChange = (e) => {
 
 const addGame = async () => {
   try {
-    await $fetch(`${config.public.API_URL}/api/games`, { method: 'POST', body: { ...props.game }})
+    await $fetch('/api/games', { method: 'POST', body: { ...props.game }})
     $showToast('Game succesvol toegevoegd', 'info');
   } catch (err) {
     console.error(err)

@@ -3,15 +3,15 @@
     <FilterOverlay :show="openFilters" @reset-page="page = 0" @close="openFilters = false" />
 
     <!-- Stats and filters -->
-    <div class="flex justify-between text-sm mb-3">
-      <div class="text-gray-500">{{ gameStore.games?.length }} game<span v-if="gameStore.games?.length > 1">s</span></div>
-      <p class="flex gap-1 items-center">
+    <div class="flex justify-between text-sm mb-3 whitespace-nowrap">
+      <div class="text-gray-500 flex items-center">{{ gameStore.games?.length }} game<span v-if="gameStore.games?.length > 1">s</span></div>
+      <div class="flex gap-1 items-center">
         Sorteren: <span class="text-gray-500 cursor-pointer" @click="changeSorting">{{ sortingValue }}</span> 
         <font-awesome-layers class="cursor-pointer" @click="toggleSorted">
           <font-awesome-icon :icon="['fas', 'sort-down']" class="h-4 w-4" :class="{'text-gray-500': isSortedUp}" />
           <font-awesome-icon :icon="['fas', 'sort-up']" class="h-4 w-4" :class="{'text-gray-500': !isSortedUp}" />
         </font-awesome-layers>
-      </p>
+      </div>
       <div class="flex gap-1 items-center">
         <p class="text-violet-500 cursor-pointer flex gap-1 items-center" @click="openFilters = true">
           <font-awesome-icon icon="fa-solid fa-filter" class="h-4 w-4" /> <span>Filters</span>
@@ -103,12 +103,16 @@ const getImage = (platform) => {
     img += 'ps3.png'
   } else if (platform === 'PlayStation 4') {
     img += 'ps4.png'
+  } else if (platform === 'PlayStation 5') {
+    img += 'ps5.png'
   } else if (platform === 'Xbox') {
     img += 'xbox.png'
   } else if (platform === 'Xbox 360') {
     img += 'xbox-360.png'
   } else if (platform === 'Xbox One') {
     img += 'xbox-one.png'
+  } else if (platform === 'Xbox Series') {
+    img += 'xbox-series.png'
   } else {
     img += 'md.png'
   }

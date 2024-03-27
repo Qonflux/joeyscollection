@@ -41,8 +41,8 @@ const gamesArray = computed(() => {
 
 const toggleCompleted = async (game) => {
   try {
-    await $fetch(`${config.public.API_URL}/api/games/${game._id}`, { method: 'PUT', body: { ...game, completed: !game.completed }})
-    $showToast('Game succesvol geüpdatet', 'info');
+    await $fetch(`/api/games/${game._id}`, { method: 'PUT', body: { ...game, completed: !game.completed }})
+    $showToast('Game succesvol geüpdatet', 'info')
     refresh()
   } catch (err) {
     console.error(err)
@@ -51,8 +51,8 @@ const toggleCompleted = async (game) => {
 
 const deleteGame = async (id) => {
   try {
-    await $fetch(`${config.public.API_URL}/api/games/${id}`, { method: 'DELETE' })
-    $showToast('Game succesvol verwijderd', 'info');
+    await $fetch(`/api/games/${id}`, { method: 'DELETE' })
+    $showToast('Game succesvol verwijderd', 'info')
     refresh()
   } catch (err) {
     console.error(err)

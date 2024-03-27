@@ -1,5 +1,3 @@
-import { defineStore } from 'pinia'
-
 const state = () => ({
   games: [],
   filteredGames: [],
@@ -19,9 +17,8 @@ const actions = {
     this.hasFiltered = bool
   },
   async getAllGames () {
-    const baseUrl = useRuntimeConfig().public.API_URL;
-    const { data: games } = await useFetch(`${baseUrl}/api/games`)
-    return games
+    const { data: games } = await useFetch('/api/games')
+    return games.value.games
   },
   async removeFilters () {
     this.hasFiltered = false

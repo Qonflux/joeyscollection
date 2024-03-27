@@ -127,7 +127,7 @@ const fetchApi = async (endpoint, body) => {
       ({ access_token: token.value } = await $fetch(`https://id.twitch.tv/oauth2/token?client_secret=${config.public.IGDB_CLIENT_SECRET}&client_id=${config.public.IGDB_CLIENT_ID}&grant_type=client_credentials`, { method: 'POST' }))
     }
 
-    return await $fetch(`${config.public.PROXY}/https://api.igdb.com/v4/${endpoint}`, {
+    return await $fetch(`${config.public.PROXY}https://api.igdb.com/v4/${endpoint}`, {
       'method': 'POST',
       'headers': {
         'Client-ID': config.public.IGDB_CLIENT_ID,
